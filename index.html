@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Reunion Registration Form</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="form-title">Registration</h1>
+      <form method="post" autocomplete="off" name="google-sheet" id="product">
+        <div class="main-user-info">
+          <div class="user-input-box">
+            <label for="fullName">First Name</label>
+            <input type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter Full Name"/>
+          </div>
+          <div class="user-input-box">
+            <label for="username">Last Name</label>
+            <input type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter Username"/>
+          </div>
+         
+          <div class="user-input-box">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    placeholder="Enter Phone Number"/>
+          </div>
+        </div>
+        <select class="selector" name="division">
+          <option value="not selected">Select your Divison </option>
+          <option value="A">A </option>
+              <option value="B">B </option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E </option>
+              <option value="F">F </option>
+              <option value="G">G </option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="A">J </option>
+              <option value="J">K</option>
+              <option value="K">L </option>
+
+      </select> 
+      
+      <label ><b>Will you be attending the reunion?</b></label><br>
+    Yes<input type="radio"   name="confirmation" value="Yes, I can attend" >
+    No<input type="radio" class="labels" name="confirmation" value="No, I can't attend" >
+        <div class="form-submit-btn">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyMhM1s_UKzSrQ2W6GUz5aIN4pSowAn1wGknYjoy-ZNCE1ffV7qNm4k_8NPRUPqfg_gfg/exec'
+      const form = document.forms['google-sheet']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => alert("Successfully Registered..."))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+  </body>
+  
+    
+</html>
